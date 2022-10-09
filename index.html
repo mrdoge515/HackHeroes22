@@ -11,28 +11,22 @@
         <title>MojeOsiedle</title>
 
         <!-- Icon -->
-        <link rel="icon" type="image/png" href="https://example.com/favicon.png">
-        <link rel="icon" type="image/x-icon" href="https://example.com/favicon.ico">
+        <link rel="icon" type="image/png" href="favico.png">
 
         <!-- Stylesheets -->
         <link rel="stylesheet" href="css/style.css"/>
         <link rel="stylesheet" href="css/normalize.css"/>
     </head>
     <body>
-        <form action="" method="post">
-            <label for="trescPosta">Tresc</label>
-            <input type="text" id="trescPosta" name="trescPosta"/> <br/>
+        <form action="php/createPost.php" method="post">
+            <label for="postUsername">Nazwa użytkownika</label>
+            <input type="text" id="postUsername" name="postUsername"/> <br/>
+            <label for="postContent">Tresc</label>
+            <input type="text" id="postContent" name="postContent"/> <br/>
             <input type="submit" value="Wyślij"/>
-            
         </form>
-        <?php
-            if($_POST == null) {
-                $tresc = "";
-            } else {
-                $tresc = $_POST["trescPosta"];
-            }
-            echo $tresc;
-        ?>
+        
+        <a href="https://www.flaticon.com/free-icons/neighbourhood-watch" title="neighbourhood watch icons" id="iconAttribution">Neighbourhood watch icons created by AmazingDesign - Flaticon</a>
     </body>
 </html>
 
