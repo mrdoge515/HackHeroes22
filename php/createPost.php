@@ -21,9 +21,9 @@
     
     // Trying to execute SQL query
     if($connection -> query($sqlQuery) === TRUE) {
-        echo "git";
+        consoleLog("[i] Pomyślnie przesłano dane na serwer");
     } else {
-        echo "nie git".$connection -> error;
+        consoleLog("[!] Wystąpił błąd podczas przesyłania informacji na serwer: " . $connection -> error);
     }
 
     // Closing connection to the database

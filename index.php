@@ -49,7 +49,7 @@
                     $row["postContent"] .
                     "</p>";
                 }
-                consoleLog("[!] Pomyślnie odczytano posty");
+                consoleLog("[i] Pomyślnie odczytano posty");
             } else {
                 consoleLog("[!] Nie ma żadnych postów do odczytania");
             }
