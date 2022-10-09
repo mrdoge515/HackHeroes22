@@ -1,4 +1,7 @@
 <?php
+    // Including file with functions and variables
+    include('config.php');
+
     if($_POST == null) {
         $userID = -1;
         $username = "";
@@ -10,23 +13,10 @@
         $postContent = $_POST["postContent"];
     }
 
-    // Server info
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $database = "hackheroes";
+    // Using function to connect to the database and handling errors
+    $connection = connectToDB($servername, $username, $password, $database);
 
-    // Trying to connect to the database and handling errors
-    $connection = new mysqli($servername, $username, $password, $database);
-    if($connection -> connect_error) {
-        die(
-            '<script>' .
-            'console.log("[!] Database connection failed: ' . $connection -> connect_error . '")' .
-            '</script>'
-        );
-    }
-
-    // Making SQL query to add a post to database
+    // Making SQL query to add a post to the database
     $sqlQuery = "INSERT INTO posts (userID, username, postContent) VALUES ('$userID', '$postUsername', '$postContent')";
     
     // Trying to execute SQL query
@@ -36,6 +26,9 @@
         echo "nie git".$connection -> error;
     }
 
+    // Closing connection to the database
+    $connection -> close();
+
     // Redirecting back to main site
-    header('Location: ../index.html');
+    header('Location: ../index.php');
 ?>

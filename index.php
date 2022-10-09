@@ -25,8 +25,38 @@
             <input type="text" id="postContent" name="postContent"/> <br/>
             <input type="submit" value="Wyślij"/>
         </form>
-        
         <a href="https://www.flaticon.com/free-icons/neighbourhood-watch" title="neighbourhood watch icons" id="iconAttribution">Neighbourhood watch icons created by AmazingDesign - Flaticon</a>
+
+        <!--
+            PHP
+        -->
+        <?php
+            // Including file with functions and variables
+            include('php/config.php');
+            
+            // Using function to connect to the database and handling errors
+            $connection = connectToDB($servername, $username, $password, $database);
+
+            // Making SQL query to read posts from the database
+            $sqlQuery = "SELECT username, postContent FROM posts";
+            $result = $connection -> query($sqlQuery);
+
+            // Reading database content
+            if($result -> num_rows > 0) {
+                while($row = $result -> fetch_assoc()) {
+                    echo "<p class='post'>" .
+                    "Autor: " . $row["username"] . "<br/>" .
+                    $row["postContent"] .
+                    "</p>";
+                }
+                consoleLog("[!] Pomyślnie odczytano posty");
+            } else {
+                consoleLog("[!] Nie ma żadnych postów do odczytania");
+            }
+
+            // Closing connection to the database
+            $connection -> close();
+        ?>
     </body>
 </html>
 
