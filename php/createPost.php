@@ -32,5 +32,5 @@
     $connection -> close();
 
     // Redirecting back to main site
-    header('Location: ../index.php');
+    echo "<script>window.location = '../index.php'</script>";
 ?>

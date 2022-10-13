@@ -30,6 +30,8 @@
 
             // Using function to connect to the database and handling errors
             $connection = connectToDB($servername, $username, $password, $database);
+
+            checkCookies("district");
         ?>
 
         <!--
@@ -113,4 +115,3 @@
         ?>
     </body>
 </html>
-

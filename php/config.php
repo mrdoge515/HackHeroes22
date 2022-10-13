@@ -27,4 +27,10 @@
 
         return $connection;
     }
+
+    function checkCookies($cookieName) {
+        if($_COOKIE[$cookieName] == null) {
+            setcookie($cookieName, 1, time() + (86400 * 30), "/");
+        }
+    }
 ?>
