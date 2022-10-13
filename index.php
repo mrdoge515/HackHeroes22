@@ -37,8 +37,9 @@
             // Using function to connect to the database and handling errors
             $connection = connectToDB($servername, $username, $password, $database);
 
+            $district = $_COOKIE['district'];
             // Making SQL query to read posts from the database
-            $sqlQuery = "SELECT username, postContent FROM posts";
+            $sqlQuery = "SELECT username, postContent FROM posts WHERE districtID = $district";
             $result = $connection -> query($sqlQuery);
 
             // Reading database content

@@ -6,18 +6,20 @@
         $userID = -1;
         $username = "";
         $postContent = "";
+        $districtID = -1;
     } else {
         // !!! userID do zmiany
         $userID = 1;
         $postUsername = $_POST["postUsername"];
         $postContent = $_POST["postContent"];
+        $districtID = $_COOKIE["district"];
     }
 
     // Using function to connect to the database and handling errors
     $connection = connectToDB($servername, $username, $password, $database);
 
     // Making SQL query to add a post to the database
-    $sqlQuery = "INSERT INTO posts (userID, username, postContent) VALUES ('$userID', '$postUsername', '$postContent')";
+    $sqlQuery = "INSERT INTO posts (userID, username, postContent, districtID) VALUES ('$userID', '$postUsername', '$postContent', $districtID)";
     
     // Trying to execute SQL query
     if($connection -> query($sqlQuery) === TRUE) {
