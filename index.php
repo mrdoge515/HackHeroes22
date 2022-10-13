@@ -21,49 +21,96 @@
         <script src="./js/district.js"></script>
     </head>
     <body>
-        <button onclick="changeDistrict(1)">Dzielnica 1</button>
-        <button onclick="changeDistrict(2)">Dzielnica 2</button>
-        <form action="php/createPost.php" method="post" id="postCreator">
+        <!--
+            Connecting to the database with PHP
+        -->
+        <?php
+            // Including file with functions and variables
+            include('./php/config.php');
+
+            // Using function to connect to the database and handling errors
+            $connection = connectToDB($servername, $username, $password, $database);
+        ?>
+
+        <!--
+            Main navbar
+        -->
+        <header>
+            <div class="dropdown">
+                <button onclick="showDropdown()" class="dropbtn">Wybierz dzielnicę</button>
+                <div id="myDropdown" class="dropdown-content">
+                    <input type="text" placeholder="Search.." id="myInput" onkeyup="searchDropdown()">
+                    <!-- 
+                        Retreving districts from the database to use them as buttons in dropdown menu
+                    -->
+                    <?php
+                        // Making SQL query to read districts from the database
+                        $dropdownQuery = "SELECT * FROM districts";
+                        $dropdownResult = $connection -> query($dropdownQuery);
+
+                        // Reading database content
+                        if($dropdownResult -> num_rows > 0) {
+                            while($dropRow = $dropdownResult -> fetch_assoc()) {
+                                echo "<a href='' onclick='changeDistrict(".
+                                $dropRow["districtID"] .
+                                ")'>" .
+                                $dropRow["districtName"] .
+                                "</a>";
+                            }
+                            consoleLog("[i] Pomyślnie odczytano dzielnice");
+                        } else {
+                            consoleLog("[!] Nie ma żadnych dzielnic do odczytania");
+                        }
+                    ?>
+                </div>
+            </div> 
+        </header>
+
+        <form action="./php/createPost.php" method="post" id="postCreator">
             <label for="postUsername">Nazwa użytkownika</label>
             <input type="text" id="postUsername" name="postUsername"/> <br/>
             <label for="postContent">Tresc</label>
             <input type="text" id="postContent" name="postContent"/> <br/>
             <input type="submit" value="Wyślij"/>
         </form>
-        <a href="https://www.flaticon.com/free-icons/neighbourhood-watch" title="neighbourhood watch icons" id="iconAttribution">Neighbourhood watch icons created by AmazingDesign - Flaticon</a>
+
         <div id="postsContainer">
             <!--
-                PHP
+                Retreving posts from the database and displaying them
             -->
             <?php
-                // Including file with functions and variables
-                include('php/config.php');
-                
-                // Using function to connect to the database and handling errors
-                $connection = connectToDB($servername, $username, $password, $database);
-
+                // Getting selected district from cookies
                 $district = $_COOKIE['district'];
+
                 // Making SQL query to read posts from the database
-                $sqlQuery = "SELECT username, postContent FROM posts WHERE districtID = $district";
-                $result = $connection -> query($sqlQuery);
+                $postsQuery = "SELECT username, postContent FROM posts WHERE districtID = $district";
+                $postsResult = $connection -> query($postsQuery);
 
                 // Reading database content
-                if($result -> num_rows > 0) {
-                    while($row = $result -> fetch_assoc()) {
+                if($postsResult -> num_rows > 0) {
+                    while($postRow = $postsResult -> fetch_assoc()) {
                         echo "<p class='post'>" .
-                        "Autor: " . $row["username"] . "<br/>" .
-                        $row["postContent"] .
+                        "Autor: " . 
+                        $postRow["username"] . 
+                        "<br/>" .
+                        $postRow["postContent"] .
                         "</p>";
                     }
                     consoleLog("[i] Pomyślnie odczytano posty");
                 } else {
                     consoleLog("[!] Nie ma żadnych postów do odczytania");
                 }
-
-                // Closing connection to the database
-                $connection -> close();
             ?>
         </div>
+
+        <a href="https://www.flaticon.com/free-icons/neighbourhood-watch" title="neighbourhood watch icons" id="iconAttribution">Neighbourhood watch icons created by AmazingDesign - Flaticon</a>
+
+        <!--
+            Closing connection to the database
+        -->
+        <?php
+            $connection -> close();
+        ?>
     </body>
 </html>
 

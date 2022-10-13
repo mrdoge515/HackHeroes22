@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Oct 13, 2022 at 04:57 PM
+-- Generation Time: Oct 13, 2022 at 06:58 PM
 -- Server version: 8.0.27
 -- PHP Version: 7.4.26
 
@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS `districts` (
   `districtID` int UNSIGNED NOT NULL AUTO_INCREMENT,
   `districtName` varchar(50) NOT NULL,
   PRIMARY KEY (`districtID`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `districts`
@@ -44,7 +44,8 @@ INSERT INTO `districts` (`districtID`, `districtName`) VALUES
 (3, 'Niwka, Sosnowiec'),
 (4, 'Radocha, Sosnowiec'),
 (5, 'Dańdówka, Sosnowiec'),
-(6, 'Pogoń, Sosnowiec');
+(6, 'Pogoń, Sosnowiec'),
+(7, 'Gołonóg, Dąbrowa Górnicza');
 
 -- --------------------------------------------------------
 
