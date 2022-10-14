@@ -1,0 +1,24 @@
+body{
+    background-color: #1d2a35;
+    color: white;
+    margin: 0px;
+    padding: 0px;
+    /*transform: translateY(60%);*/
+}
+
+main{
+    position: relative;
+    display: inline-block;
+    left: 30%;
+    
+    width: 40%;
+    
+}
+
+form{
+    display: block;
+    margin: auto;
+    position: relative;
+    left: 30%;
+    margin-top: 10%;
+}

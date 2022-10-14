@@ -3,7 +3,7 @@ body{
     color: white;
     margin: 0px;
     padding: 0px;
-    transform: translateY(60%);
+    transform: translateY(50%);
 }
 
 #left{
@@ -29,6 +29,7 @@ body{
 form{
     position: relative;
     left: 50%;
+    width: 400px;
 }
 
 input{
@@ -36,7 +37,9 @@ input{
     height: 45px;
 }
 
-button{
+a{
+    text-decoration: none;
+    
     display: block;
     position: relative;
     left: 55%;
@@ -49,6 +52,9 @@ button{
     background-color: white;
 
     cursor: pointer;
+    
+    text-align: center;
+    padding-top: 20px;
 }
 
 #log_in{
@@ -69,14 +75,4 @@ button{
 #sign_in:hover{
     background-color: green;
     color: white;
-}
-
-a{
-    text-decoration: none;
-}
-
-#line{
-    width: 33%;
-    position: relative;
-    left: 17%;
 }
