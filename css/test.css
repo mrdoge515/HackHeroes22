@@ -1,0 +1,33 @@
+body {
+    background-color: #1d2a35;
+    color: white;
+    margin: 0px;
+    padding: 0px;
+}
+
+header{
+  overflow: hidden;
+  background-color: #1a252e;
+  
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+#plus-button{
+    display: inline-block;
+    position: relative;
+    left: 95%;
+    top: 3px;
+}
+
+img{
+    cursor: pointer;
+}
+
+#postsContainer{
+    position: relative;
+    width: 50%;
+    left: 49%;
+    top: 50%;
+}
