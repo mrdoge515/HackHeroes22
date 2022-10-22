@@ -15,10 +15,13 @@
 
         <!-- Stylesheets -->
         <link rel="stylesheet" href="css/style.css"/>
-        <link rel="stylesheet" href="css/normalize.css"/>
+        <!--<link rel="stylesheet" href="css/normalize.css"/>-->
+        <link rel="stylesheet" href="css/test.css"/>
+        <link rel="stylesheet" href="css/modal.css"/>
 
         <!-- Scripts -->
         <script src="./js/district.js"></script>
+        
     </head>
     <body>
         <!--
@@ -38,6 +41,13 @@
             Main navbar
         -->
         <header>
+            <div id="plus-button">
+                <a data-modal-target="#modal"><img src="black_plus_mini.png"></a>
+            </div>
+        </header>
+
+
+
             <div class="dropdown">
                 <button onclick="showDropdown()" class="dropbtn">Wybierz dzielnicę</button>
                 <div id="myDropdown" class="dropdown-content">
@@ -65,16 +75,32 @@
                         }
                     ?>
                 </div>
-            </div> 
-        </header>
+            </div>
 
-        <form action="./php/createPost.php" method="post" id="postCreator">
-            <label for="postUsername">Nazwa użytkownika</label>
-            <input type="text" id="postUsername" name="postUsername"/> <br/>
-            <label for="postContent">Tresc</label>
-            <input type="text" id="postContent" name="postContent"/> <br/>
-            <input type="submit" value="Wyślij"/>
-        </form>
+
+
+        <!--Tworzenie przycisku wyświetlającego małe okienko z formularzem-->
+        <div class="modal" id="modal">
+            <div id="modal-header">
+                <div id="title">Napisz tu swój post!</div>
+                <button data-close-button id="close-button">&times;</button>
+            </div>
+
+            <div id="modal-body">
+                
+                <form action="./php/createPost.php" method="post" id="postCreator">
+                    <label for="postUsername">Nazwa użytkownika</label>
+                    <input type="text" id="postUsername" name="postUsername"/> <br/><br/>
+
+                    <label for="postContent">Tresc</label>
+                    <input type="text" id="postContent" name="postContent"/> <br/><br/>
+
+                    <input id="xd" type="submit" value="Wyślij"/><br/>
+                </form>
+
+            </div>
+        </div>
+
 
         <div id="postsContainer">
             <!--
@@ -113,5 +139,9 @@
         <?php
             $connection -> close();
         ?>
+        
+        <div id="overlay"></div>
+
+        <script src="./js/modal.js"></script>
     </body>
 </html>
