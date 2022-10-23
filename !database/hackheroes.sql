@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Oct 13, 2022 at 06:58 PM
+-- Generation Time: Oct 23, 2022 at 06:22 PM
 -- Server version: 8.0.27
 -- PHP Version: 7.4.26
 
@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS `districts` (
   `districtID` int UNSIGNED NOT NULL AUTO_INCREMENT,
   `districtName` varchar(50) NOT NULL,
   PRIMARY KEY (`districtID`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
+) ENGINE=MyISAM AUTO_INCREMENT=8;
 
 --
 -- Dumping data for table `districts`
@@ -63,7 +63,21 @@ CREATE TABLE IF NOT EXISTS `posts` (
   `districtID` int UNSIGNED NOT NULL,
   PRIMARY KEY (`id`),
   KEY `districtID` (`districtID`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 ;
+) ENGINE=MyISAM;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE IF NOT EXISTS `users` (
+  `user_id` int NOT NULL,
+  `user_name` varchar(255) DEFAULT NULL,
+  `user_email` varchar(255) DEFAULT NULL,
+  `user_password` varchar(255) DEFAULT NULL
+) ENGINE=MyISAM;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
