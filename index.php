@@ -42,7 +42,7 @@
         -->
         <header>
             <div id="plus-button">
-                <a data-modal-target="#modal"><img src="black_plus_mini.png"></a>
+                <a data-modal-target="#modal"><img src="./img/black_plus_mini.png"></a>
             </div>
         </header>
 
@@ -51,7 +51,7 @@
             <div class="dropdown">
                 <button onclick="showDropdown()" class="dropbtn">Wybierz dzielnicę</button>
                 <div id="myDropdown" class="dropdown-content">
-                    <input type="text" placeholder="Search.." id="myInput" onkeyup="searchDropdown()">
+                    <input type="text" placeholder="Wyszukaj.." id="myInput" onkeyup="searchDropdown()">
                     <!-- 
                         Retreving districts from the database to use them as buttons in dropdown menu
                     -->
@@ -75,6 +75,10 @@
                         }
                     ?>
                 </div>
+                Wybrana dzielnica : 
+                <?php
+                    echo $_COOKIE["district"];
+                ?>
             </div>
 
 
