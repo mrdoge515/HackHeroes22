@@ -5,7 +5,6 @@
     $num = 0;
     $user_email = $_POST["email"];
     $user_password = $_POST["pass"];
-    $blad = "Niepoprawny email lub hasło.";
 
     
     //Sprawdzanie czy taki email z takim hasłem istnieją w bazie danych

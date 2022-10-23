@@ -23,18 +23,9 @@
 
 
             <form id="form" action="php/logging_in.php" method="post">
-
-                <?php 
-                include("php/logging_in.php");
-                if ($count === 0): ?>
-
                 <input placeholder="E-Mail Adress" type="email" id="email" name="email"><br><br>
     
                 <input placeholder="Password" type="password" id="pass" name="pass"><br><br>
-                <?php
-                    echo $blad;
-                endif;
-                ?>
             </form>
         
 
