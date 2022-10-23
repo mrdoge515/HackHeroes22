@@ -24,6 +24,12 @@
         
     </head>
     <body>
+        <?php
+            if(!isset($_COOKIE["district"])) {
+                $_COOKIE["district"] = 0;
+            }
+        ?>
+
         <!--
             Connecting to the database with PHP
         -->
